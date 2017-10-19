@@ -66,12 +66,12 @@ RSpec.describe Customer, type: :model do
         company_id: company.id,
         accepted: true
       )
-      expect(customer.open_quotes).not_to include([quote2])
+      expect(customer.open_quotes).not_to include(quote2)
     end
   end
 
   describe 'accepted_quotes' do
-    it 'should return accepted quotes' do
+    it 'should not return anything but accepted quotes' do
       customer = create(:customer)
       company = create(:company)
       customer_request1 = create(:customer_request,
@@ -100,10 +100,10 @@ RSpec.describe Customer, type: :model do
         )
       quote1 = create(:quote,
         customer_request_id: customer_request1.id,
-        company_id: company.id
+        company_id: company.id,
+        accepted: nil
       )
-      expect(customer.accepted_quotes).not_to include([quote1])
+      expect(customer.accepted_quotes).not_to include(quote1)
     end
   end 
-  
 end
