@@ -6,3 +6,8 @@ $(document).ready(function() {
     endDate.min = startDate.value;
   })
 });
+
+
+// var viewed=document.getElementById('customer_viewed');
+//   viewed.onclick=viewCheck;
+// `insert into contract (view_date) values (to_timestamp(${Date.now()} / 1000.0))` 
