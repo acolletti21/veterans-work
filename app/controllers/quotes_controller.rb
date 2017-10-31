@@ -44,8 +44,10 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
     @customer_request = @quote.customer_request
     @company = @quote.company
-    if current_customer
-      @quote.update(customer_viewed: true)
+    @now = Time.current 
+    @view_date = @quote.view_date
+    if current_customer && view_date != null  
+      @quote.update(customer_viewed: true, view_date: now) 
     end
   end
 
@@ -60,7 +62,7 @@ class QuotesController < ApplicationController
     end
   end
 
-  private
+private
 
   def quote_params
     params.require(:quote).permit(
